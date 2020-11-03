@@ -1,0 +1,54 @@
+td{
+    padding: 0;
+}
+html{
+    font-family: Calibri;
+    background-color: rgb(242,244,245)
+}
+
+a{
+    text-decoration: none;
+}
+a:visited{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+.page{
+    color: rgb(0,47,52);
+    margin:5px;
+    text-decoration: none;
+    width:30px;
+    height:30px;
+    display: block;
+    border-radius: 20px;
+    align-content: center;
+}
+.page:visited
+{
+    color: rgb(0,47,52);
+    align-content: center;
+    text-decoration: none;
+}
+.page:hover{
+    text-decoration: none;
+    color: rgb(0,47,52);
+    align-content: center;
+    background-color: lightgray;
+}
+h4{
+    margin-top: 5.32px;
+    margin-left: 10.64px;
+    margin-bottom: 0;
+}
+.plate{
+    background-color: white;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 716px;
+}
