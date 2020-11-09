@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb8e01d6-53b7-44e1-9ed6-1e4cbfec9dc3" name="Default Changelist" comment="" />
+    <list default="true" id="bb8e01d6-53b7-44e1-9ed6-1e4cbfec9dc3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/adder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Announcement.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Announcement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/BigRender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/BigRender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Main.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/MiniRender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/MiniRender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/announcements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/announcements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/announcements_tmp.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/ids.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/last_id.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,13 +40,19 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1jY93Aq8Z8gnzHOgsmHdi66YZq0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -40,30 +76,74 @@
       <workItem from="1603988600642" duration="7841000" />
       <workItem from="1604336915226" duration="51000" />
       <workItem from="1604341469078" duration="1529000" />
-      <workItem from="1604416578456" duration="5138000" />
+      <workItem from="1604416578456" duration="9171000" />
+      <workItem from="1604506559656" duration="2974000" />
+      <workItem from="1604509552842" duration="7317000" />
+      <workItem from="1604591799367" duration="4537000" />
+      <workItem from="1604912750577" duration="14868000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="938" y="144" key="#PHP" timestamp="1603969993167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="938" y="144" key="#PHP/0.0.1920.1050@0.0.1920.1050" timestamp="1603969993167" />
-    <state x="685" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603969981580">
+    <state x="685" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604599974095">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="685" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1603969981580" />
+    <state x="685" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604599974095" />
     <state x="718" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604342259710">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="718" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1604342259710" />
-    <state x="721" y="248" key="NewPhpClassDialog" timestamp="1603970608077">
+    <state x="689" y="315" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1604928353678">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="721" y="248" key="NewPhpClassDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1603970608077" />
+    <state x="689" y="315" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604928353678" />
+    <state x="835" y="423" key="Github.ShareDialog" timestamp="1604425705822">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="835" y="423" key="Github.ShareDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604425705822" />
+    <state x="764" y="230" key="Github.UntrackedFilesDialog" timestamp="1604425715358">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="764" y="230" key="Github.UntrackedFilesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604425715358" />
+    <state x="721" y="248" key="NewPhpClassDialog" timestamp="1604928371530">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="721" y="248" key="NewPhpClassDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604928371530" />
+    <state x="794" y="448" key="NewPhpFileDialog" timestamp="1604929637362">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="794" y="448" key="NewPhpFileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604929637362" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1604425729777">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1604425729777" />
+    <state x="859" y="402" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1604605560873">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="859" y="402" key="com.intellij.database.actions.DdlActions$CreateObject$1/0.0.1920.1050@0.0.1920.1050" timestamp="1604605560873" />
+    <state x="953" y="0" width="974" height="1057" key="dock-window-1" timestamp="1604530725440">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="953" y="0" width="974" height="1057" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1604530725440" />
     <state x="616" y="243" key="run.anything.popup" timestamp="1604341695974">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

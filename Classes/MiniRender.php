@@ -6,11 +6,13 @@ class MiniRender implements IRender
     public $announcements;
     public $page_number;
     public $number_of_announcements;
-    public function __construct($announcements, $page_number, $number_of_announcements)
+    public $additional_get_params;
+    public function __construct($announcements, $page_number, $number_of_announcements, $additional_get_params)
     {
         $this->announcements = $announcements;
         $this->page_number = $page_number;
         $this->number_of_announcements = $number_of_announcements;
+        $this->additional_get_params = $additional_get_params;
     }
     private function generate_pagination($max_page, $current_page)
     {
@@ -22,7 +24,7 @@ class MiniRender implements IRender
                 $page_dom.=' rgb(0,47,52) ';
             else
                 $page_dom.=' rgb(0,0,0,0) ';
-            $page_dom .= '3px;" href="http://localhost:63342/slando_oop/index.php?page='.$i.'"><h4>'.$i.'</h4></a>';
+            $page_dom .= '3px;" href="http://localhost:63342/slando_oop/index.php?page='.$i.$this->additional_get_params.'"><h4>'.$i.'</h4></a>';
         }
         $page_dom .= '</div>';
         return $page_dom;
@@ -69,7 +71,7 @@ class MiniRender implements IRender
         if($from>=$to||$this->page_number<=0||!is_int($this->page_number))
         {
             $this->page_number = isset($_COOKIE["last_page"])?$_COOKIE["last_page"]:1;
-            die("<div>Страница не найдена</div><br/><a href='http://localhost:63342/slando_oop/index.php?page=".$this->page_number."'>Перейти на страницу ".$this->page_number."?</a>");
+            die("<div>Страница не найдена</div><br/><a href='http://localhost:63342/slando_oop/index.php?page=".$this->page_number.$this->additional_get_params.">Перейти на страницу ".$this->page_number."?</a>");
         }
         setcookie("last_page",strval($this->page_number));
         $keys = array_keys($this->announcements);

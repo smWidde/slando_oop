@@ -10,7 +10,9 @@ class Announcement
     public $link;
     public $description;
     public $views;
-    public function __construct($title, $address, $image, $date,$price, $isTop, $description, $views)
+    public $category;
+    public $tags;
+    public function __construct($title, $address, $image, $date,$price, $isTop, $description, $views, $category, $tags)
     {
         $this->title =$title;
         $this->address = $address;
@@ -20,6 +22,8 @@ class Announcement
         $this->isTop=$isTop;
         $this->description=$description;
         $this->views=$views;
+        $this->category=$category;
+        $this->tags=$tags;
     }
     public function set_link($link_template, $get_id)
     {
@@ -32,10 +36,12 @@ class Announcement
             'image'=>$this->image,
             'date'=>$this->date,
             'price'=>$this->price,
-            'isTop'=>$this->isTop,
+            'isTop'=>intval($this->isTop),
             'link'=>$this->link,
             'description'=>$this->description,
-            'views'=>$this->views];
+            'views'=>$this->views,
+            'category'=>$this->category,
+            'tags'=>$this->tags];
     }
 }
 ?>

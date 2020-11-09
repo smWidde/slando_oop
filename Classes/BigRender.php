@@ -11,6 +11,15 @@ class BigRender implements IRender
 
     function generate_announcement($product)
     {
+        $tags = $product->tags;
+        $tags_text = '';
+        foreach ($tags as $item)
+        {
+            $tags_text .=
+                '<div class="tag">'.
+                    '<h4>'.$item.'</h4>'.
+                '</div>';
+        }
         return
             '<div class="plate"><div style="display:table-cell; width: 716px; height: 602px; vertical-align: middle; text-align: center">'.
                 '<img style="display: block; margin: auto;" src="'.$product->image.'"/>'.
@@ -23,8 +32,14 @@ class BigRender implements IRender
                     '<h1>'.$product->price.'</h1>'.
                 '</div>'.
                 '<div>'.
+                    '<h3>Категория: '.$product->category.'</h3>'.
+                '</div>'.
+                '<div>'.
                     '<h3>Описание</h3>'.
                     '<h4>'.$product->description.'</h4>'.
+                '</div>'.
+                '<div style="display: inline-block; text-align: center;">'.
+                    $tags_text.
                 '</div>'.
                 '<div style="justify-content: space-between; display: flex;">'.
                     '<h5>Опубликовано '.$product->date.'</h5>'.

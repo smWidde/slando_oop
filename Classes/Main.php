@@ -14,94 +14,88 @@ class Main implements IRender
     private $filtered_announcements;
     private $filter_value;
     private $filter_property;
+    private $getString;
     private $isFiltered;
-    private $idsPath;
-    private $announcementsDirectoryPath;
-    public function __construct($page_number, $number_of_announcements_per_page, $announcement_id_curr, $idsPath, $announcementsDirectoryPath)
+    private $idPath;
+    private $announcementsPath;
+    public function __construct($page_number, $number_of_announcements_per_page, $announcement_id_curr, $announcementsPath, $idPath)
     {
-        $this->announcements = Array();
         $this->page_number = $page_number;
         $this->number_of_announcements_per_page = $number_of_announcements_per_page;
         $this->announcement_id_curr = $announcement_id_curr;
         $this->isFiltered = false;
-        $this->idsPath = $idsPath;
-        $this->announcementsDirectoryPath = $announcementsDirectoryPath;
+        $this->announcementsPath = $announcementsPath;
+        $this->idPath = $idPath;
+        $this->get_announcements();
     }
-//    public function add_announcement($announcement, $announcement_id)
-//    {
-//        $announcement->set_link("http://localhost:63342/slando_oop/index.php?product=", $announcement_id);
-//        $this->announcements[$announcement_id] = $announcement;
-//        $this->filtered_announcements = $this->announcements;
-//    }
-//    public function add_announcements_from_file($path)
-//    {
-//        $file = fopen($path, 'r') or die("Не удалось считать файл");
-//        while(($buffer = fgets($file)) !== false) {
-//            $tokens = Array();
-//            $tok = strtok(mb_convert_encoding ($buffer, 'UTF-8'), "╫");
-//            while($tok!=false)
-//            {
-//                array_push($tokens, $tok);
-//                $tok = strtok("╫");
-//            }
-//            $res=new Announcement($tokens[0],$tokens[1],$tokens[2],$tokens[3],$tokens[4],boolval($tokens[5]),$tokens[6],$tokens[7]);
-//            $this->add_announcement($res, $tokens[8]);
-//            $this->append_announcement_to_file($this->resourcesPath, );
-//        }
-//    }
-//    private function append_announcement_to_file($path, $announcement_id)
-//    {
-//        $file = fopen($path, 'a') or die("Не удалось создать файл");
-//        $res = '';
-//        foreach ($this->announcements[$announcement_id]->get_announcement_assoc_array() as $prop)
-//        {
-//            $res .= $prop.'╫';
-//        }
-//        $res.= '\n';
-//        fwrite($file, $res);
-//        fclose($file);
-//    }
-//    private function save_announcements_to_file($path)
-//    {
-//        $file = fopen($path, 'w') or die("Не удалось создать файл");
-//        $res = '';
-//        foreach ($this->announcements as $item)
-//        {
-//            foreach ($item->get_announcement_assoc_array() as $prop)
-//            {
-//                $res .= $prop.'╫';
-//            }
-//            $res.='\n';
-//        }
-//        fwrite($file, $res);
-//        fclose($file);
-//    }
     private function get_announcements()
     {
-        $keys = Array();
+        $file = fopen($this->announcementsPath, 'r');
+        flock($file,LOCK_SH);
+        while(($buffer = fgets($file))!==false)
+        {
 
-        $key = fopen($this->idsPath, 'r');
-        fgets($key);
-        $key = fgets($key);
-    }
-    private function save_ids($last_id)
-    {
-        $keys = array_keys($this->announcements);
-        $res = $last_id.'\n';
-        foreach ($keys as $item) {
-            $res .= $keys.'╫';
+            $tokens = explode("╪", $buffer);
+            array_pop($tokens);
+            $tags = explode("╫", $tokens[10]);
+            array_pop($tags);
+            $this->announcements[$tokens[11]] = new Announcement($tokens[0],$tokens[1],$tokens[2],$tokens[3],$tokens[4],intval($tokens[5]),$tokens[7],$tokens[8], $tokens[9], $tags);
+            $this->announcements[$tokens[11]]->link = $tokens[6];
+            unset($tokens);
         }
-    }
-    private function add_announcement($announcement)
-    {
-        $file = fopen($this->idsPath, 'r') or die("Не удалось считать файл");
-        $announcement_id = fgets($file);
-        $announcement_id = strtok(mb_convert_encoding ($announcement_id, 'UTF-8'), "╪");
-        var_dump($announcement_id);
-        $announcement->set_link("http://localhost:63342/slando_oop/index.php?product=", $announcement_id);
-        $this->announcements[$announcement_id] = $announcement;
+        flock($file,LOCK_UN);
+        fclose($file);
         $this->filtered_announcements = $this->announcements;
-        $this->save_ids(intval($announcement_id)+1);
+    }
+    private function save_announcements()
+    {
+        $file = fopen($this->announcementsPath, 'w');
+        flock($file,LOCK_EX);
+        $keys = array_keys($this->announcements);
+        $res = '';
+
+        foreach ($keys as $item) {
+            $object_res = '';
+//            var_dump($this->announcements[$item]->get_announcement_assoc_array());
+            foreach ($this->announcements[$item]->get_announcement_assoc_array() as $attr)
+            {
+                if(is_array($attr))
+                {
+                    foreach ($attr as $tag)
+                    {
+                        $object_res .= $tag.'╫';
+                    }
+                }
+                else
+                {
+                    $object_res .= $attr;
+                }
+                $object_res.='╪';
+            }
+            $object_res .= $item.'╪'."\n";
+            $res .= $object_res;
+        }
+        fwrite($file, $res);
+        flock($file,LOCK_UN);
+        fclose($file);
+        $this->filtered_announcements = $this->announcements;
+    }
+    public function add_announcement($announcement)
+    {
+        $file = fopen($this->idPath, 'r');
+        flock($file,LOCK_SH);
+        $last_id = intval(fgets($file));
+        flock($file, LOCK_UN);
+        fclose($file);
+        $announcement->set_link("http://localhost:63342/slando_oop/index.php?product=", $last_id);
+        $this->announcements[$last_id] = $announcement;
+        $this->save_announcements();
+        $file = fopen($this->idPath, 'w');
+        flock($file,LOCK_EX);
+        fwrite($file, intval($last_id+1));
+        var_dump($last_id);
+        flock($file, LOCK_UN);
+        fclose($file);
     }
     private function announcement_filter($var)
     {
@@ -114,22 +108,25 @@ class Main implements IRender
         $this->filter_property = $property_name;
         $this->filtered_announcements = array_filter($this->announcements, "Main::announcement_filter");
         $this->isFiltered = true;
+        $this->getString = '&filter_key='.$property_name.'&filter_value='.$value;
     }
     public function Render()
     {
         if(isset($this->announcement_id_curr))
         {
             $rend = new BigRender($this->announcements[$this->announcement_id_curr]);
+            $this->announcements[$this->announcement_id_curr]->views=intval($this->announcements[$this->announcement_id_curr]->views)+1;
+            $this->save_announcements();
         }
         else
         {
-            if(!isset($this->page_number)||$this->isFiltered==true)
+            if(!isset($this->page_number))
             {
                 $this->page_number=1;
             }
-            $rend=new MiniRender($this->filtered_announcements, $this->page_number,$this->number_of_announcements_per_page);
+            $rend=new MiniRender($this->filtered_announcements, $this->page_number, $this->number_of_announcements_per_page,$this->getString);
             $this->filtered_announcements = $this->announcements;
-            $isFiltered = false;
+            $this->isFiltered = false;
         }
         return $rend->Render();
     }
